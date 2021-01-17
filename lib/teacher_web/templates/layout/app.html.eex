@@ -14,7 +14,7 @@
       <%= if @conn.assigns[:current_user] do %>
         <%= link "Profile", to: Routes.user_path(@conn, :show, @current_user) %> |
         <%= link "Sign out", to: Routes.session_path(@conn, :delete), method: :delete %>
-        | 0 item(s) in your cart 
+        | <%= cart_item_count(@current_user) %> items(s) in your cart
       <% else %>
         <%= link "Sign in", to: Routes.session_path(@conn, :new) %> |
         <%= link "Sign up", to: Routes.registration_path(@conn, :new) %>
