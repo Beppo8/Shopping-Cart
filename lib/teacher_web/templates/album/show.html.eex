@@ -1,0 +1,15 @@
+<div><%= link "Back", to: Routes.album_path(@conn, :index) %></div>
+<h2><%= @album.title %> by <%= @album.artist %></h2>
+<ul>
+  <li>
+    <strong>Summary:</strong>
+    <%= @album.summary %>
+  </li>
+  <li>
+    <strong>Year:</strong>
+    <%= @album.year %>
+  </li>
+</ul>
+<%= if @conn.assigns[:current_user] do %>
+  <span><%= link "Add to cart", to: "#" %></span>
+<% end %>

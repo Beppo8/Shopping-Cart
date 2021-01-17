@@ -1,0 +1,31 @@
+<h1>Albums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Title</th>
+      <th>Summary</th>
+      <th>Year</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for album <- @page.entries do %>
+      <tr>
+        <td><%= album.artist %></td>
+        <td><%= album.title %></td>
+        <td><%= album.summary %></td>
+        <td><%= album.year %></td>
+        <td>
+          <%= link "Show", to: Routes.album_path(@conn, :show, album) %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= pagination_links @page,
+  previous: Phoenix.HTML.raw("&leftarrow;"),
+  next: Phoenix.HTML.raw("&rightarrow;") %>
