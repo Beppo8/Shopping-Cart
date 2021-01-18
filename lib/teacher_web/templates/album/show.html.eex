@@ -12,6 +12,6 @@
 </ul>
 <%= if @conn.assigns[:current_user] do %>
   <span>
-    <%= link "Add to cart", to: Routes.cart_path(@conn, :update, @album.id), method: :put %>
+    <%= cart_link(@conn, @current_user, @album) %>
   </span>
 <% end %>
