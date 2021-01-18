@@ -5,6 +5,19 @@ defmodule Teacher.Workers.CartAgent do
     Agent.start_link(fn -> %{} end, name: __MODULE__)
   end
 
+  def delete_item(cart_id, item_id) do
+    updated_cart =
+      cart_id
+      |> get_cart()
+      |> Enum.reject(fn(cart_item) ->
+        cart_item.id == item_id
+      end)
+
+      Agent.update(__MODULE__, fn(state) ->
+        Map.merge(satate, %{cart_id => updated_cart})
+      end)
+  end
+
   def add_item(cart_id, item) do
     Agent.cast(__MODULE__, fn(state) ->
       Map.update(state, cart_id, [item], &(&1 ++ [item]))
