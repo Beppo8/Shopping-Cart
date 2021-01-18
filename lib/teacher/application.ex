@@ -12,7 +12,8 @@ defmodule Teacher.Application do
       Teacher.Repo,
       # Start the endpoint when the application starts
       TeacherWeb.Endpoint,
-      Teacher.Workers.CartAgent
+      # Teacher.Workers.CartAgent
+      Teacher.Workers.CartSupervisor
       # Starts a worker by calling: Teacher.Worker.start_link(arg)
       # {Teacher.Worker, arg},
     ]
