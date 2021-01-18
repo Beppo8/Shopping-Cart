@@ -2,7 +2,7 @@ defmodule TeacherWeb.AlbumView do
   use TeacherWeb, :view
   import Scrivener.HTML
 
-  alias Teacher.Workers.CartAgent
+  alias Teacher.Carts
 
   def cart_link(conn, current_user, album) do
     if in_cart?(current_user.username, album.id) do
@@ -19,7 +19,7 @@ defmodule TeacherWeb.AlbumView do
   end
 
   defp existing_ids(username) do
-    case CartAgent.get_cart(username) do
+    case Carts.get(username) do
       nil ->
         []
       cart ->

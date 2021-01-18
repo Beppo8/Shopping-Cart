@@ -2,11 +2,11 @@ defmodule Teacher.Carts do
 
   alias Teacher.Workers.{CartAgent, CartSupervisor}
 
-  def add(cart_id) do
+  def add(cart_id, item) do
     if cart_exists?(cart_id) do
       CartAgent.add_item(cart_id, item)
     else
-      CartSupervisor.start_child({[item], cart})
+      CartSupervisor.start_child({[item], cart_id})
     end
   end
 
