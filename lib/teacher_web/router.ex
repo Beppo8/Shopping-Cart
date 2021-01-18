@@ -21,7 +21,7 @@ defmodule TeacherWeb.Router do
     delete "/sign-out", SessionController, :delete
     resources "/registrations", RegistrationController, only: [:new, :create]
 
-    resource "/cart", CartController, only: [:update, :delete]
+    resources "/cart", CartController, only: [:update, :delete]
 
     resources "/albums", AlbumController
     resources "/users", UserController, only: [:show]

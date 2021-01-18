@@ -5,7 +5,7 @@ defmodule TeacherWeb.AlbumView do
   alias Teacher.Workers.CartAgent
 
   def cart_link(conn, current_user, album) do
-    if in_cart?(cirrent_user.username, album.id) do
+    if in_cart?(current_user.username, album.id) do
       link "Remove from cart", to: Routes.cart_path(conn, :delete, album.id), method: :delete
     else
       link "Add to cart", to: Routes.cart_path(conn, :update, album.id), method: :put

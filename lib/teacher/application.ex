@@ -13,9 +13,8 @@ defmodule Teacher.Application do
       # Start the endpoint when the application starts
       TeacherWeb.Endpoint,
       # Teacher.Workers.CartAgent
-      Teacher.Workers.CartSupervisor
-      # Starts a worker by calling: Teacher.Worker.start_link(arg)
-      # {Teacher.Worker, arg},
+      Teacher.Workers.CartSupervisor,
+      {Registry, [keys: :unique, name: :cart_registry]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -1,10 +1,10 @@
 defmodule TeacherWeb.LayoutView do
   use TeacherWeb, :view
 
-  alias Teacher.Workers.CartAgent
+  alias Teacher.Carts
 
   def cart_item_count(current_user) do
-    case CartAgent.get_cart(current_user.username) do
+    case Carts.get(current_user.username) do
       nil ->
         0
       cart ->
